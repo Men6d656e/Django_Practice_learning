@@ -1,12 +1,29 @@
-{% comment %} {% extends 'firsapp/base.html' %} {% endcomment %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>All page </h1>
-</body>
-</html>
+
+{% extends 'layout.html' %}
+
+{% block tittle %}
+Home Page
+{% endblock  %}
+
+
+{% block content %}
+<h1 class="text-2xl font-black my-10">
+    Hello World , you are at firsApp page asas
+</h1>
+
+<div class="grid grid-cols-3 gap-5 m-5">
+
+    {% for chai in chais %}
+    <div class="chai_item bg-gray-700 space-y-5 p-3">
+        <img src="{{ chai.image.url }}" alt="l">
+        <h3>{{ chai.name }}</h3>
+        <a href="{% url 'chai_details' chai.id %}">
+            <button type = "button " class="px-5 py-1 bg-blue-600 rounded-sm ">
+                {{chai.type}} - {{ chai.id}}
+            </button>
+        </a>
+    </div>
+    {% endfor %} 
+</div>
+
+{% endblock  %}
